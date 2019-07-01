@@ -1,2 +1,2 @@
 # batchtools
-Batch processing tools for ESRI ArcGIS
+Batch export tools for ESRI ArcGIS
