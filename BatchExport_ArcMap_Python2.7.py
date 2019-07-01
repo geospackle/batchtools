@@ -1,5 +1,7 @@
 
-# create list of figures to export and move figures with same figure number to OLD
+"""For ArcMap Desktop. Creates a list of figures to export and moves figures with existing figure number to old folder.
+This script is designed for a layout with text "Figure [No]" and figure name as only element in 14.0 font."""
+
 
 import os
 import shutil
@@ -20,7 +22,7 @@ for filename in os.listdir(sourceFolder):
         basename, extension = os.path.splitext(fullpath)
         if extension.lower() == ".mxd":
             mxd = arcpy.mapping.MapDocument(fullpath)
-            figName = filename[:-4]  # in case does not find 14.0 text size
+            figName = filename[:-4]  # in case does not find 14.0 text size for figure name
             figNumber = ""
             for elm in arcpy.mapping.ListLayoutElements(mxd, "TEXT_ELEMENT"):
                 if "Figure" in elm.text:
@@ -32,7 +34,7 @@ for filename in os.listdir(sourceFolder):
                     figName = elm.text
                     figName = figName.replace("\r", " ").replace("\n", "")      # new line in text field results in \r\n
 
-            if "<dyn" in figName:
+            if "<dyn" in figName:       # in case either is a dynamic field (map series)
                 figName = filename[:-4]
             if "<dyn" in figNumber:
                 figNumber = ""
