@@ -1,3 +1,6 @@
+"""Tool validator for Arc Pro batch export tool. Returns a list of layouts for Arc tool UI.""" 
+
+
 class ToolValidator(object):
     """Class for validating a tool's parameter values and controlling
     the behavior of the tool's dialog."""
