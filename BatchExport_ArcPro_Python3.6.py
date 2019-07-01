@@ -1,9 +1,5 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Dec 27 15:40:04 2017
-
-@author: amoelsae
-"""
+"""For ArcGIS Pro. Creates a list of figures to export and moves figures with existing figure number to old folder.
+This script is designed for a layout with text "Figure [No]" and figure name as only element in 14.0 font."""
 
 import os
 import shutil
@@ -28,7 +24,7 @@ for i in layouts_select:
     lyt = layouts_dict[i.strip("'")]
     txt_elms = lyt.listElements("TEXT_ELEMENT")
     figNumber = ""
-    figName = i
+    figName = i  # if no text size 14.0 in layout
     for elm in txt_elms:
         if "Figure" in elm.text:
             try:
@@ -38,7 +34,7 @@ for i in layouts_select:
         if elm.textSize == 14.0:
             figName = elm.text
             figName = figName.replace("\r", " ").replace("\n", " ")
-    if "<dyn" in figName:
+    if "<dyn" in figName:       # in case dynamic field (map series)
         figName = i.strip("'")
     if "<dyn" in figNumber:
         figNumber = ""
