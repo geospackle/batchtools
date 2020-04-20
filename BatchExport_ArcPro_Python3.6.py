@@ -1,5 +1,5 @@
-"""For ArcGIS Pro. Creates a list of figures to export and moves figures with existing figure number to old folder.
-This script is designed for a layout with text "Figure [No]" and figure name as only element in 14.0 font."""
+"""For ArcGIS Pro. Creates a list of figures to export and moves figures with existing figure number to old folder. Exports figures with figure number and name.
+This script is designed for a layout with text "Figure [No]" for figure number and figure name in 14.0 font (only element in 14.0 font)."""
 
 import os
 import shutil
